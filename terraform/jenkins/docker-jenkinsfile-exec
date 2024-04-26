@@ -50,5 +50,24 @@ pipeline {
                 }
             }
         }
+        stage('List Contents') {
+            steps {
+                script {
+                    dir("${WORKSPACE}") {
+                    withCredentials([
+                        usernamePassword(credentialsId: 'del-docker-hub-auth', 
+                        usernameVariable: 'DOCKER_HUB_USERNAME', 
+                        passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+                            docker.image("devopseasylearning/jenkins-master-slave:latest").inside('-u 0:0') {
+                                sh """
+                                    ls -l
+                                    mkdir testing-file
+                                """
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
