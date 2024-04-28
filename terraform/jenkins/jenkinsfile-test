@@ -2,8 +2,8 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HUB_REGISTRY="devopseasylearning"
-        DOCKER_CREDENTIAL_ID = 'del-docker-hub-auth'
+        DOCKER_HUB_REGISTRY="felixrussel"
+        DOCKER_CREDENTIAL_ID = 'docker-hub-auth-test'
     }
     parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'master', description: '')
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     git credentialsId: 'devops-tia-repo',
-                        url: 'git@github.com:devopstia/s6.git',
+                        url: 'git@github.com:crowrusselo/s6A.git',
                         branch: "${params.BRANCH_NAME}"
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
                 }
             }
         }
-        stage('Login into') {
+        /*stage('Login into') {
             steps {
                 script {
                     // Login to Docker Hub

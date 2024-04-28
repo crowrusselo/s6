@@ -53,16 +53,15 @@ pipeline {
         stage('List Contents') {
             steps {
                 script {
-                    dir("${WORKSPACE}") {
+                    dir("${WORKSPACE}/terraform") {
                     withCredentials([
                         usernamePassword(credentialsId: 'del-docker-hub-auth', 
                         usernameVariable: 'DOCKER_HUB_USERNAME', 
                         passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
                             docker.image("devopseasylearning/jenkins-master-slave:latest").inside('-u 0:0') {
                                 sh """
-                                    ls -l
-                                    cp -rf s6-project* testing-file 
-                                    ls -l testing-file
+                                    ls -l 
+                                    terraform --version
                                 """
                             }
                         }
