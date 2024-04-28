@@ -1,9 +1,21 @@
 
 pipeline {
     agent any
+    /*triggers {
+        genericTrigger {
+            genericVariables {
+                genericVariable {
+                    key('${{ json.webhookEvent }}')
+                    value('${{ json.action }}')
+                }
+            }
+            token('http://server3.anomicatech.com:8080/github-webhook/')
+            printContributedVariables(true)
+            printPostContent(true)
+            regexpFilterExpression('.*')*/
     environment {
         DOCKER_HUB_REGISTRY="felixrussel"
-        DOCKER_CREDENTIAL_ID = 'docker-hub-auth-test'
+        DOCKER_CREDENTIAL_ID = 'docker-hub-key-test'
     }
     parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'master', description: '')
@@ -13,7 +25,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 script {
-                    git credentialsId: 'github-key-test',
+                    git credentialsId: 'github-key-felix',
                         url: 'git@github.com:crowrusselo/s6A.git',
                         branch: "${params.BRANCH_NAME}"
                 }
