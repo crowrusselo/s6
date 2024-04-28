@@ -13,7 +13,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 script {
-                    git credentialsId: 'devops-tia-repo',
+                    git credentialsId: 'github-key-test',
                         url: 'git@github.com:crowrusselo/s6A.git',
                         branch: "${params.BRANCH_NAME}"
                 }
