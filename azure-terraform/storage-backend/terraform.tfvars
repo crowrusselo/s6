@@ -1,10 +1,10 @@
-location        = "eastus"
-subscription_id = "c344bf80-ed9d-4630-b1a7-4c9d3225a111"
+location        = "East US 2"
+subscription_id = "15b54e00-8fb4-45f5-9af1-790ad984e98a"
 tags = {
-  "id"             = "2560"
-  "owner"          = "DevOps Easy Learning"
+  "id"             = "2585"
+  "owner"          = "group kapsu"
   "environment"    = "dev"
-  "project"        = "del"
+  "project"        = "test"
   "create_by"      = "Terraform"
   "cloud_provider" = "aws"
 }
